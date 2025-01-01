@@ -10,7 +10,7 @@ class Simulator(nn.Module):
     def __init__(self, 
                  message_passing_num, 
                  node_input_size, 
-                 edge_input_size = 1, 
+                 edge_input_size, 
                  latent_dim_size = 16, 
                  device = 'cuda:0', 
                  model_dir='checkpoint/simulator.pth', 
@@ -22,7 +22,7 @@ class Simulator(nn.Module):
         self.node_input_size =  node_input_size
         self.edge_input_size = edge_input_size
         self.model_dir = model_dir
-        self.model = GMN(message_passing_num=message_passing_num, node_attr_size=node_input_size, latent_dim_size=latent_dim_size).to(device)
+        self.model = GMN(message_passing_num=message_passing_num, node_attr_size=node_input_size, edge_attr_size=edge_input_size, latent_dim_size=latent_dim_size).to(device)
         self._output_normalizer = Normalizer(size=2, name='output_normalizer', device=device)
         self._node_normalizer = Normalizer(size=2, name='node_normalizer', device=device) # sizenya 2 velocity + 4 possible cell type
         # self._edge_normalizer = normalization.Normalizer(size=edge_input_size, name='edge_normalizer', device=device)

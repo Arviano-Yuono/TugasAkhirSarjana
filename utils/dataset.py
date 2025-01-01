@@ -143,6 +143,7 @@ class DatasetFormat():
         """
         Return the next trajectory data.
         """
+        print('next')
         self.check_and_close_tra()
         self.open_tra()
 
